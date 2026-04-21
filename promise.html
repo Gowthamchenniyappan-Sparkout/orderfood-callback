@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Promise Asynchronous</title>
+</head>
+<body>
+
+<h1>Asynchronous Promise Topic</h1>
+<p>This is a simple example of an asynchronous Promise in JavaScript.</p>
+
+<script>
+function orderfood() {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      console.log("Order food");
+      resolve();
+    }, 1000);
+  });
+}
+
+function preparefood() {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      console.log("Preparing food");
+      resolve();
+    }, 2000);
+  });
+}
+
+function readyfood() {
+  return new Promise((resolve) => {
+    console.log("Ready food");
+    resolve();
+  });
+}
+
+// Promise chaining
+orderfood()
+  .then(() => preparefood())
+  .then(() => readyfood())
+  .catch((error) => console.log(error));
+</script>
+
+</body>
+</html>
