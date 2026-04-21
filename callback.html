@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>CallBack Test</title>
+  <h1>Asychronous CallBack Topic</h1>
+  <p>So,In this program i tried to make us of this concept by how it works funtion after funtion with callbacks order food waits for 1sec then it call the prepare food function and it will wait for 2sec and immediately ready food functiin will run.</p>
+</head>
+<body>
+
+<script>
+function orderfood(callback) {
+  setTimeout(() => {
+    console.log("Order food");
+    callback();
+  }, 1000);
+}
+
+function preparefood(callback) {
+  setTimeout(() => {
+    console.log("Preparing food");
+    callback();
+  }, 2000);
+}
+
+function readyfood() {
+  console.log("Ready food");
+}
+
+orderfood(() => {
+  preparefood(() => {
+    readyfood();
+  });
+});
+</script>
+
+</body>
+</html>
